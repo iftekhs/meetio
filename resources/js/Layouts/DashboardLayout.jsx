@@ -4,28 +4,29 @@ import { BiHomeAlt } from "react-icons/bi";
 import { FiUsers } from "react-icons/fi";
 import { GoGear } from "react-icons/go";
 
-const DashboardLayout = () => {
+const DashboardLayout = ({ children }) => {
     return (
-        <div id="panel" class="flex min-h-screen bg-gray-200 p-10">
-            <aside class="w-1/7 min-w-[250px] bg-white rounded-3xl p-4">
-                <h2 class="text-2xl font-bold text-center mb-4">Meetio</h2>
-
-                <div class="mt-6">
+        <div id="panel" className="flex gap-3 min-h-screen bg-gray-200 p-10">
+            <aside className="w-64 bg-white rounded-3xl p-4">
+                <h2 className="text-2xl font-bold text-center mb-4">Meetio</h2>
+                <div className="mt-6">
                     <ul className="flex flex-col gap-2">
-                        <SidebarLink active={true} name={"Dashboard"}>
+                        <SidebarLink
+                            link={route("admin.dashboard")}
+                            name={"Dashboard"}
+                        >
                             <BiHomeAlt></BiHomeAlt>
                         </SidebarLink>
-                        <SidebarLink name={"Users"}>
+                        <SidebarLink link={"/test"} name={"Users"}>
                             <FiUsers></FiUsers>
                         </SidebarLink>
-                        <SidebarLink name={"Settings"}>
+                        <SidebarLink link={"/test"} name={"Settings"}>
                             <GoGear></GoGear>
                         </SidebarLink>
                     </ul>
                 </div>
             </aside>
-
-            <main class="w-6/7 p-4"></main>
+            <main className="flex-1">{children}</main>
         </div>
     );
 };
