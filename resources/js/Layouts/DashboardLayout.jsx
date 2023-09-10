@@ -11,7 +11,7 @@ const DashboardLayout = ({ children }) => {
     return (
         <div id="panel" className="min-h-screen bg-gray-200">
             <div className="flex gap-3 p-10">
-                <aside className="w-64 bg-white rounded-3xl p-4">
+                <aside className="min-h-[90vh] w-64 bg-white rounded-3xl p-4">
                     <h2 className="text-2xl font-bold text-center mb-4">
                         Meetio
                     </h2>
