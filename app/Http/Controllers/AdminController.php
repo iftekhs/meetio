@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Activity;
 use App\Models\Meeting;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class AdminController extends Controller
@@ -24,5 +25,14 @@ class AdminController extends Controller
         });
 
         return Inertia::render('admin/dashboard/index', compact('usersCount', 'meetingsCount', 'loginsCount'));
+    }
+
+    public function users(Request $request)
+    {
+        $page = $request->query('page');
+        $users = cache()->remember('users_page_' . $page ?? 1, now()->addHours(1), function () {
+            return User::whereRole("user")->paginate(7);
+        });
+        return Inertia::render('admin/users/index', compact('users'));
     }
 }

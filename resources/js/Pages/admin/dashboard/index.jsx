@@ -1,10 +1,10 @@
 import DashboardLayout from "@/Layouts/DashboardLayout";
-import MetricCard from "@/Pages/shared/MetricCard";
 import { usePage } from "@inertiajs/react";
 import React from "react";
 import { PiUsersThreeDuotone } from "react-icons/pi";
 import { BiVideo } from "react-icons/bi";
 import { AiOutlineLogin } from "react-icons/ai";
+import MetricCard from "@/Components/panel/MetricCard";
 
 const index = () => {
     const { usersCount, meetingsCount, loginsCount } = usePage().props;

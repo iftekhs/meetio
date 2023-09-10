@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('title');
-            $table->enum('status', ['pending', 'cancled', 'completed'])->default('pending');
+            $table->enum('status', ['pending', 'started', 'cancled', 'completed'])->default('pending');
             $table->text('join_link');
             $table->timestamps();
         });
