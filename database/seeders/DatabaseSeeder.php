@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Activity;
 use App\Models\Meeting;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -25,6 +26,9 @@ class DatabaseSeeder extends Seeder
 
         Meeting::factory(10)->create();
 
+        Activity::factory(159)->create();
+
+        cache()->forget('logins_count');
         cache()->forget('users_count');
         cache()->forget('meetings_count');
     }

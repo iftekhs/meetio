@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Activity;
 use App\Models\Meeting;
 use App\Models\User;
 use Inertia\Inertia;
@@ -18,6 +19,10 @@ class AdminController extends Controller
             return Meeting::all()->count();
         });
 
-        return Inertia::render('admin/dashboard/index', compact('usersCount', 'meetingsCount'));
+        $loginsCount = cache()->remember('logins_count', now()->addHours(1), function () {
+            return Activity::whereType('login')->count();
+        });
+
+        return Inertia::render('admin/dashboard/index', compact('usersCount', 'meetingsCount', 'loginsCount'));
     }
 }
