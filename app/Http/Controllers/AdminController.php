@@ -31,7 +31,7 @@ class AdminController extends Controller
     {
         $page = $request->query('page');
         $users = cache()->remember('users_page_' . $page ?? 1, now()->addHours(1), function () {
-            return User::whereRole("user")->paginate(7);
+            return User::select(['id', 'name', 'email', 'image'])->whereRole("user")->paginate(7);
         });
         return Inertia::render('admin/users/index', compact('users'));
     }
